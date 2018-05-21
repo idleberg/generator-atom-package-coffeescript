@@ -33,4 +33,4 @@ yo atom-package-coffeescript
 
 ## License
 
-This work is licensed under the [MIT License](LICENSE)
+This work is licensed under the [MIT License](https://opensource.org/licenses/MIT)
