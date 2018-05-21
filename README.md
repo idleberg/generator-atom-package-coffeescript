@@ -1,5 +1,9 @@
 # generator-atom-package-coffeescript
 
+[![npm](https://img.shields.io/npm/l/generator-atom-package-coffeescript.svg?style=flat-square)](https://www.npmjs.org/package/generator-atom-package-coffeescript)
+[![npm](https://img.shields.io/npm/v/generator-atom-package-coffeescript.svg?style=flat-square)](https://www.npmjs.org/package/generator-atom-package-coffeescript)
+[![David](https://img.shields.io/david/idleberg/generator-atom-package-coffeescript.svg?style=flat-square)](https://david-dm.org/idleberg/generator-atom-package-coffeescript)
+
 ## Description
 
 A [Yeoman](http://yeoman.io/authoring/user-interactions.html) generator for Atom packages written in any version CoffeeScript.
