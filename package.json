@@ -1,12 +1,11 @@
 {
   "name": "generator-atom-package-coffeescript",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Generator for Atom packages written in any version CoffeeScript",
   "files": [
     "generators"
   ],
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [
     "yeoman-generator"
   ],
