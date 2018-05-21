@@ -1,0 +1,26 @@
+{
+  "name": "generator-atom-package-coffeescript",
+  "version": "0.0.0",
+  "description": "Generator for Atom packages written in any version CoffeeScript",
+  "files": [
+    "generators"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idleberg/generator-atom-package-coffeescript"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@sindresorhus/slugify": "^0.3.0",
+    "pascal-case": "^2.0.1",
+    "spdx-license-list": "^4.0.0",
+    "yeoman-generator": "^2.0.5"
+  }
+}
