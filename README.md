@@ -11,7 +11,7 @@ But why? Sooner or later, CoffeeScript support will likely be dropped from Atom.
 Use your preferred [Node](https://nodejs.org/) package manager to install the CLI tool
 
 ```sh
-yarn global add generator-atom-package-coffeescript || npm install generator-atom-package-coffeescript --global
+yarn global add generator-atom-package-coffeescript || npm i generator-atom-package-coffeescript -g
 ```
 
 ## Usage
