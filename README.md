@@ -4,7 +4,7 @@
 
 A [Yeoman](http://yeoman.io/authoring/user-interactions.html) generator for Atom packages written in any version CoffeeScript.
 
-But why? Sooner or later, CoffeeScript support will likely be dropped from Atom. However, some people will still want to use the language they've come to love.This generator templates a package that compiles your CoffeeScript on install time.
+But why? Sooner or later, CoffeeScript support will likely be dropped from Atom. However, some people will still want to use the language they've come to love. This generator templates a package that compiles your CoffeeScript on install time.
 
 ## Installation
 
