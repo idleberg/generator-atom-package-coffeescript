@@ -14,8 +14,8 @@ But why? Sooner or later, CoffeeScript support will likely be dropped from Atom.
 
 - supports CoffeeScript v1 and v2
 - adds any [SPDX](https://spdx.org/licenses/) license
-- adds [CircleCI](https://circleci.com/gh/visbot) configuration
-- adds [Travis CI](https://travis-ci.org/idleberg/node-wili) configuration
+- adds [CircleCI](https://circleci.com) configuration
+- adds [Travis CI](https://travis-ci.org) configuration
 
 ## Installation
 
