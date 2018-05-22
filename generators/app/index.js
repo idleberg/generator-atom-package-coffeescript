@@ -2,7 +2,7 @@ const Generator = require('yeoman-generator');
 
 const fs = require('fs');
 const mkdirp = require('mkdirp');
-const pascalCase = require('pascal-case')
+const pascalCase = require('pascal-case');
 const slugify = require('@sindresorhus/slugify');
 const spdxLicenseList = require('spdx-license-list/full');
 
