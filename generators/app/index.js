@@ -1,11 +1,14 @@
 const Generator = require('yeoman-generator');
+const pkg = require('../../package.json');
 
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const pascalCase = require('pascal-case');
 const slugify = require('@sindresorhus/slugify');
 const spdxLicenseList = require('spdx-license-list/full');
+const updateNotifier = require('update-notifier');
 
+// Is there a newer version of this generator?
 const spdxCodes = Object.getOwnPropertyNames(spdxLicenseList).sort();
 const licenseChoices = spdxCodes.map(obj =>{
    const licenses = {};
@@ -13,6 +16,9 @@ const licenseChoices = spdxCodes.map(obj =>{
 
    return licenses;
 })
+
+// Is there a newer version of this generator?
+updateNotifier({ pkg: pkg }).notify();
 
 module.exports = class extends Generator {
   inquirer() {
@@ -44,7 +50,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'license',
         message: 'Choose license',
-        default: "MIT",
+        default: 'MIT',
         choices: licenseChoices,
         store: true
       },
@@ -90,7 +96,7 @@ module.exports = class extends Generator {
         type: 'checkbox',
         name: 'addConfig',
         message: 'Add configuration',
-        default: "MIT",
+        default: 'MIT',
         choices: [
           {
             name: 'Circle CI',
@@ -109,7 +115,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'compiler',
         message: 'CoffeeScript compiler',
-        default: "coffeescript2",
+        default: 'coffeescript2',
         choices: [
           {
             name: 'CoffeeScript v1',
