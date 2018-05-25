@@ -5,6 +5,7 @@
     "description": "<%= pkg.description %>",
     "scripts": {
         "build": "coffee --compile --output lib/ src/",
+        "lint": "coffeelint src/",
         "precommit": "npm run lint",
         "postinstall": "npm run build",
         "test": "echo \"Error: no test specified\" && exit 1"

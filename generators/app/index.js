@@ -250,7 +250,8 @@ module.exports = class extends Generator {
       );
 
       // Install latest versions of dependencies
-      this.npmInstall([props.compiler], { 'saveDev': true });
+      const coffeelint = (props.compiler === 'coffeescript@1') ? 'coffeelint@1' : 'coffeelint@2'
+      this.npmInstall([props.compiler, coffeelint, 'husky'], { 'saveDev': true });
 
       // Initialize git repository
       if (props.initGit) {
