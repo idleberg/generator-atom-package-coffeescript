@@ -115,7 +115,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'compiler',
         message: 'CoffeeScript compiler',
-        default: 'coffeescript2',
+        default: 'coffeescript@2',
         choices: [
           {
             name: 'CoffeeScript v1',
