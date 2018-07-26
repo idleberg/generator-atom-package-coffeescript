@@ -93,6 +93,44 @@ module.exports = class extends Generator {
         default: true
       },
       {
+        type: 'list',
+        name: 'buildScript',
+        message: 'Build Script',
+        default: 'prepublishOnly',
+        choices: [
+          {
+            name: 'postinstall',
+            value: 'postinstall',
+          },
+          {
+            name: 'prepublishOnly',
+            value: 'prepublishOnly',
+          }
+        ],
+        store: true
+      },
+      {
+        type: 'list',
+        name: 'linterHook',
+        message: 'Linter Hook',
+        default: 'precommit',
+        choices: [
+          {
+            name: 'precommit',
+            value: 'precommit',
+          },
+          {
+            name: 'prepush',
+            value: 'prepush',
+          },
+          {
+            name: 'prepublishOnly',
+            value: 'prepublishOnly',
+          }
+        ],
+        store: true
+      },
+      {
         type: 'checkbox',
         name: 'addConfig',
         message: 'Add configuration',
@@ -129,27 +167,6 @@ module.exports = class extends Generator {
             name: 'Decaffeinate',
             value: 'decaffeinate',
             disabled: true
-          }
-        ],
-        store: true
-      },
-      {
-        type: 'list',
-        name: 'linterHook',
-        message: 'Linter hook',
-        default: 'precommit',
-        choices: [
-          {
-            name: 'precommit',
-            value: 'precommit',
-          },
-          {
-            name: 'prepush',
-            value: 'prepush',
-          },
-          {
-            name: 'prepublishOnly',
-            value: 'prepublishOnly',
           }
         ],
         store: true
@@ -227,6 +244,17 @@ module.exports = class extends Generator {
         }
       );
 
+      if (props.buildScript === props.linterHook) {
+        props.scripts = [
+          '"prepublishOnly": "npm run lint && npm run build"'
+        ];
+      } else {
+        props.scripts = [
+          `"${props.buildScript}": "npm run build"`,
+          `"${props.linterHook}": "npm run lint"`
+        ];
+      }
+
       this.fs.copyTpl(
         this.templatePath('package.json.ejs'),
         this.destinationPath('package.json'),
@@ -271,8 +299,14 @@ module.exports = class extends Generator {
       );
 
       // Install latest versions of dependencies
+      let isDevDeps = true;
       const coffeelint = (props.compiler === 'coffeescript@1') ? 'coffeelint@1' : 'coffeelint@2'
-      this.yarnInstall([props.compiler, coffeelint, 'husky'], { 'dev': true });
+      const dependencies = [props.compiler, coffeelint, 'husky'];
+
+      if (props.buildScript === 'prepublishOnly') {
+       isDevDeps = false;
+      }
+      this.yarnInstall(dependencies, { 'dev': isDevDeps });
 
       // Initialize git repository
       if (props.initGit) {

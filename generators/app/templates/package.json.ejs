@@ -5,9 +5,8 @@
     "description": "<%= pkg.description %>",
     "scripts": {
         "build": "coffee --compile --output lib/ src/",
-        "lint": "coffeelint src/",
-        "<%= pkg.linterHook %>": "npm run lint",
-        "postinstall": "npm run build",
+        "lint": "coffeelint src/",<% pkg.scripts.forEach( script => {  %>
+        <%- script %>,<% }) %>
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -25,6 +24,6 @@
         "<%= pkg.name %>:hello-world"
       ]
     },<% } %>
-    "devDependencies": {
-    }
+    "dependencies": {},
+    "devDependencies": {}
 }
