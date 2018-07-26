@@ -8,7 +8,7 @@
 
 A [Yeoman](http://yeoman.io/authoring/user-interactions.html) generator for Atom packages written in any version CoffeeScript.
 
-Atom currently transpiled packages written in CoffeeScript, but sooner or later CoffeeScript support will likely be dropped from Atom. Also, this does not work for packages written in CoffeeScript v2. However, some people will still want to use the language they've come to love. This generator templates a package that compiles your CoffeeScript on install time.
+Atom already transpiles packages written in CoffeeScript automatically, but there are many indications that the Atom team will move away from CoffeeScript in the near future. Also, transpiling packages is (and will remain) limited to CoffeeScript v1. Since there will always be people who want to continue using CoffeeScript, this generator offers a solution.
 
 **Features**
 
