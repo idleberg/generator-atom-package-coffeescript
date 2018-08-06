@@ -1,9 +1,9 @@
 # generator-atom-package-coffeescript
 
-[![npm](https://img.shields.io/npm/l/generator-atom-package-coffeescript.svg?style=flat-square)](https://www.npmjs.org/package/generator-atom-package-coffeescript)
-[![npm](https://img.shields.io/npm/v/generator-atom-package-coffeescript.svg?style=flat-square)](https://www.npmjs.org/package/generator-atom-package-coffeescript)
-[![CircleCI](https://img.shields.io/circleci/project/idleberg/generator-atom-package-coffeescript.svg?style=flat-square)](https://circleci.com/gh/idleberg/generator-atom-package-coffeescript)
-[![David](https://img.shields.io/david/idleberg/generator-atom-package-coffeescript.svg?style=flat-square)](https://david-dm.org/idleberg/generator-atom-package-coffeescript)
+[![npm](https://flat.badgen.net/npm/license/generator-atom-package-coffeescript)](https://www.npmjs.org/package/generator-atom-package-coffeescript)
+[![npm](https://flat.badgen.net/npm/v/generator-atom-package-coffeescript)](https://www.npmjs.org/package/generator-atom-package-coffeescript)
+[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/generator-atom-package-coffeescript)](https://circleci.com/gh/idleberg/generator-atom-package-coffeescript)
+[![David](https://flat.badgen.net/david/dep/idleberg/generator-atom-package-coffeescript)](https://david-dm.org/idleberg/generator-atom-package-coffeescript)
 
 ## Description
 
