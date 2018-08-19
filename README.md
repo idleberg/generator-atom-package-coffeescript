@@ -28,7 +28,7 @@ yarn global add generator-atom-package-coffeescript || npm i generator-atom-pack
 
 ## Usage
 
-Run the generator and follow its instructions
+Run the generator and follow its instructions. Use `--help`to list available flags.
 
 ```sh
 yo atom-package-coffeescript
