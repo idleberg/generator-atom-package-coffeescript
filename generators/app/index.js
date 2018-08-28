@@ -6,13 +6,14 @@ const mkdirp = require('mkdirp');
 const pascalCase = require('pascal-case');
 const slugify = require('@sindresorhus/slugify');
 const spdxLicenseList = require('spdx-license-list/full');
+const terminalLink = require('terminal-link');
 const updateNotifier = require('update-notifier');
 
 // Is there a newer version of this generator?
 const spdxCodes = Object.getOwnPropertyNames(spdxLicenseList).sort();
 const licenseChoices = spdxCodes.map(obj =>{
    const licenses = {};
-   licenses['value'] = obj;
+   licenses['value'] = terminalLink(obj, `https://spdx.org/licenses/${obj}.html`);
 
    return licenses;
 })
@@ -152,12 +153,12 @@ module.exports = class extends Generator {
         store: true,
         choices: [
           {
-            name: 'Circle CI',
+            name: terminalLink('Circle CI', 'https://circleci.com/'),
             value: 'circleCI',
             checked: false
           },
           {
-            name: 'Travis CI',
+            name: terminalLink('Travis CI', 'https://travis-ci.org/'),
             value: 'travisCI',
             checked: false
           }
@@ -171,15 +172,15 @@ module.exports = class extends Generator {
         store: true,
         choices: [
           {
-            name: 'CoffeeScript v1',
+            name: terminalLink('CoffeeScript v1', 'https://www.npmjs.com/package/coffee-script'),
             value: 'coffeescript@1',
           },
           {
-            name: 'CoffeeScript v2',
+            name: terminalLink('CoffeeScript v2', 'https://www.npmjs.com/package/coffeescript'),
             value: 'coffeescript@2',
           },
           {
-            name: 'Decaffeinate',
+            name: terminalLink('Decaffeinate', 'https://www.npmjs.com/package/decaffeinate'),
             value: 'decaffeinate',
             disabled: true
           }
