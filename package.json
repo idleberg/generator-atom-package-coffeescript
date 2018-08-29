@@ -25,6 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "@sindresorhus/slugify": "^0.3.0",
+    "git-user-name": "^2.0.0",
     "pascal-case": "^2.0.1",
     "spdx-license-list": "^4.1.0",
     "terminal-link": "^1.1.0",
