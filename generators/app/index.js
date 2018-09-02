@@ -13,13 +13,17 @@ const updateNotifier = require('update-notifier');
 
 // Is there a newer version of this generator?
 const spdxCodes = Object.getOwnPropertyNames(spdxLicenseList).sort();
-const licenseChoices = spdxCodes.map(obj =>{
-   const licenses = {};
-   licenses['name'] = terminalLink(obj, `https://spdx.org/licenses/${obj}.html`, { fallback: obj });
-   licenses['value'] = obj;
+const licenseChoices = spdxCodes.map(obj => {
+  const licenses = {};
+  licenses['name'] = terminalLink(obj, `https://spdx.org/licenses/${obj}.html`, {
+    fallback() {
+      return obj;
+    }
+  });
+  licenses['value'] = obj;
 
-   return licenses;
-})
+  return licenses;
+});
 
 // Is there a newer version of this generator?
 updateNotifier({ pkg: meta }).notify();
@@ -196,12 +200,20 @@ module.exports = class extends Generator {
         store: true,
         choices: [
           {
-            name: terminalLink('Circle CI', 'https://circleci.com/', { fallback: 'Travis CI' }),
+            name: terminalLink('Circle CI', 'https://circleci.com/', {
+              fallback() {
+                return 'Circle CI';
+              }
+            }),
             value: 'circleCI',
             checked: false
           },
           {
-            name: terminalLink('Travis CI', 'https://travis-ci.org/', { fallback: 'Circle CI' }),
+            name: terminalLink('Travis CI', 'https://travis-ci.org/', {
+              fallback() {
+                return 'Travis CI';
+              }
+            }),
             value: 'travisCI',
             checked: false
           }
@@ -215,15 +227,27 @@ module.exports = class extends Generator {
         store: true,
         choices: [
           {
-            name: terminalLink('CoffeeScript v1', 'https://www.npmjs.com/package/coffee-script', { fallback: 'CoffeeScript v1' }),
+            name: terminalLink('CoffeeScript v1', 'https://www.npmjs.com/package/coffee-script', {
+              fallback() {
+                return 'CoffeeScript v1';
+              }
+            }),
             value: 'coffeescript@1',
           },
           {
-            name: terminalLink('CoffeeScript v2', 'https://www.npmjs.com/package/coffeescript', { fallback: 'CoffeeScript v2' }),
+            name: terminalLink('CoffeeScript v2', 'https://www.npmjs.com/package/coffeescript', {
+              fallback() {
+                return 'CoffeeScript v2';
+              }
+            }),
             value: 'coffeescript@2',
           },
           {
-            name: terminalLink('Decaffeinate', 'https://www.npmjs.com/package/decaffeinate', { fallback: 'Decaffeinate' }),
+            name: terminalLink('Decaffeinate', 'https://www.npmjs.com/package/decaffeinate', {
+              fallback() {
+                return 'Decaffeinate';
+              }
+            }),
             value: 'decaffeinate',
             disabled: true
           }
