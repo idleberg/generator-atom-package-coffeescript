@@ -15,7 +15,7 @@ const updateNotifier = require('update-notifier');
 const spdxCodes = Object.getOwnPropertyNames(spdxLicenseList).sort();
 const licenseChoices = spdxCodes.map(obj =>{
    const licenses = {};
-   licenses['name'] = terminalLink(obj, `https://spdx.org/licenses/${obj}.html`);
+   licenses['name'] = terminalLink(obj, `https://spdx.org/licenses/${obj}.html`, { fallback: obj });
    licenses['value'] = obj;
 
    return licenses;
@@ -196,12 +196,12 @@ module.exports = class extends Generator {
         store: true,
         choices: [
           {
-            name: terminalLink('Circle CI', 'https://circleci.com/'),
+            name: terminalLink('Circle CI', 'https://circleci.com/', { fallback: 'Travis CI' }),
             value: 'circleCI',
             checked: false
           },
           {
-            name: terminalLink('Travis CI', 'https://travis-ci.org/'),
+            name: terminalLink('Travis CI', 'https://travis-ci.org/', { fallback: 'Circle CI' }),
             value: 'travisCI',
             checked: false
           }
@@ -215,15 +215,15 @@ module.exports = class extends Generator {
         store: true,
         choices: [
           {
-            name: terminalLink('CoffeeScript v1', 'https://www.npmjs.com/package/coffee-script'),
+            name: terminalLink('CoffeeScript v1', 'https://www.npmjs.com/package/coffee-script', { fallback: 'CoffeeScript v1' }),
             value: 'coffeescript@1',
           },
           {
-            name: terminalLink('CoffeeScript v2', 'https://www.npmjs.com/package/coffeescript'),
+            name: terminalLink('CoffeeScript v2', 'https://www.npmjs.com/package/coffeescript', { fallback: 'CoffeeScript v2' }),
             value: 'coffeescript@2',
           },
           {
-            name: terminalLink('Decaffeinate', 'https://www.npmjs.com/package/decaffeinate'),
+            name: terminalLink('Decaffeinate', 'https://www.npmjs.com/package/decaffeinate', { fallback: 'Decaffeinate' }),
             value: 'decaffeinate',
             disabled: true
           }
