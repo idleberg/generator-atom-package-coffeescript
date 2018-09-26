@@ -77,7 +77,7 @@ module.exports = class extends Generator {
       {
         type: 'list',
         name: 'license',
-        message: 'Choose license',
+        message: 'Choose a license',
         default: 'MIT',
         choices: licenseChoices,
         store: true
