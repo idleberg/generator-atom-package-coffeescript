@@ -353,35 +353,35 @@ module.exports = class extends Generator {
 
       if (props.addConfig.indexOf('circleCI') !== -1) {
         mkdirp('.circleci');
-        this.fs.copyTpl(
+        this.fs.copy(
           this.templatePath('_circleci/config.yml'),
           this.destinationPath('.circleci/config.yml')
         );
       }
 
       if (props.addConfig.indexOf('travisCI') !== -1) {
-        this.fs.copyTpl(
+        this.fs.copy(
           this.templatePath('_travis.yml'),
           this.destinationPath('.travis.yml')
         );
       }
 
-      this.fs.copyTpl(
+      this.fs.copy(
         this.templatePath('_editorconfig'),
         this.destinationPath('.editorconfig')
       );
 
-      this.fs.copyTpl(
+      this.fs.copy(
         this.templatePath('_gitignore'),
         this.destinationPath('.gitignore')
       );
 
-      this.fs.copyTpl(
+      this.fs.copy(
         this.templatePath('_coffeelintignore'),
         this.destinationPath(`.coffeelintignore`)
       );
 
-      this.fs.copyTpl(
+      this.fs.copy(
         this.templatePath('coffeelint.json'),
         this.destinationPath(`coffeelint.json`)
       );
