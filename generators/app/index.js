@@ -261,7 +261,7 @@ module.exports = class extends Generator {
       },
       {
         name: 'openInEditor',
-        message: 'Open in editor?',
+        message: 'Open in default editor?',
         type: 'confirm',
         default: 'true',
         store: true,
