@@ -7,7 +7,7 @@
 
 ## Description
 
-A [Yeoman](http://yeoman.io/authoring/user-interactions.html) generator for Atom packages written in any version CoffeeScript.
+A [Yeoman](http://yeoman.io/authoring/user-interactions.html) generator for Atom packages written in *any* version CoffeeScript.
 
 Atom already transpiles packages written in CoffeeScript automatically, but there are many indications that the Atom team will move away from CoffeeScript in the near future. Also, transpiling packages is (and will remain) limited to CoffeeScript v1. Since there will always be people who want to continue using CoffeeScript, this generator offers a solution.
 
