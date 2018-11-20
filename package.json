@@ -1,6 +1,6 @@
 {
   "name": "generator-atom-package-coffeescript",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "Generator for Atom packages written in any version CoffeeScript",
   "files": [
     "generators"
