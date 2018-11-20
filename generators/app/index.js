@@ -2,13 +2,14 @@ const Generator = require('yeoman-generator');
 const meta = require('../../package.json');
 
 const axios = require('axios');
-const gitUserName = require('git-user-name');
+// const gitUserName = require('git-user-name');
 const mkdirp = require('mkdirp');
 const pascalCase = require('pascal-case');
 const slugify = require('@sindresorhus/slugify');
 const spdxLicenseList = require('spdx-license-list/full');
 const terminalLink = require('terminal-link');
 const updateNotifier = require('update-notifier');
+const yosay = require('yosay');
 const { join } = require('path');
 
 // Is there a newer version of this generator?
@@ -33,14 +34,40 @@ module.exports = class extends Generator {
     super(args, opts);
 
     // Use long flags to discourage usage
-    this.option('allow-atom-prefix', { desc: `Allows naming the package with "atom-" prefix`, default: false });
-    this.option('allow-empty-description', { desc: `Allows empty packag description`, default: false });
+    this.option(
+      'allow-atom-prefix',
+      {
+        desc: `Allows naming the package with "atom-" prefix`,
+        default: false,
+        type: Boolean
+      }
+    );
+    this.option(
+      'allow-empty-description',
+      {
+        desc: `Allows empty packag description`,
+        default: false,
+        type: Boolean
+      }
+    );
+    this.option(
+      'clear',
+      {
+        desc: `Doesn't clear the console on startup`,
+        default: true,
+        type: Boolean
+      }
+    );
 
     this.allowAtomPrefix = (this.options.allowAtomPrefix ? true : false);
     this.allowEmptyDescription = (this.options.allowEmptyDescription ? true : false);
+    this.clear = (this.options.clear ? true : false);
   }
 
   inquirer() {
+    if (this.clear) console.clear();
+    console.log(yosay('Let me help you build an Atom package'));
+
     return this.prompt([
       {
         name: 'name',
@@ -69,7 +96,7 @@ module.exports = class extends Generator {
       {
         name: 'author',
         message: 'What\'s your GitHub username?',
-        default: gitUserName(),
+        default: this.user.github.username(),
         store: true,
         validate: x => x.length > 0 ? true : 'You have to provide a username',
         when: () => !this.options.org
