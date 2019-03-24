@@ -24,7 +24,7 @@ Atom already transpiles packages written in CoffeeScript automatically, but ther
 Use your preferred [Node](https://nodejs.org/) package manager to install the CLI tool
 
 ```sh
-yarn global add generator-atom-package-coffeescript || npm i generator-atom-package-coffeescript -g
+npm i generator-atom-package-coffeescript -g
 ```
 
 ## Usage
