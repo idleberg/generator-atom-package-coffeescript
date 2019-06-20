@@ -58,10 +58,19 @@ module.exports = class extends Generator {
         type: Boolean
       }
     );
+    this.option(
+      'debug',
+      {
+        desc: `Displays debug information`,
+        default: false,
+        type: Boolean
+      }
+    );
 
     this.allowAtomPrefix = (this.options.allowAtomPrefix ? true : false);
     this.allowEmptyDescription = (this.options.allowEmptyDescription ? true : false);
     this.clear = (this.options.clear ? true : false);
+    this.debug = (this.options.debug ? true : false);
   }
 
   inquirer() {
@@ -96,7 +105,17 @@ module.exports = class extends Generator {
       {
         name: 'author',
         message: 'What\'s your GitHub username?',
-        default: async () => await this.user.github.username(),
+        default: async () => {
+          let username;
+
+          try {
+            username = await this.user.github.username();
+          } catch (error) {
+            username = '';
+          }
+
+          return username;
+        },
         store: true,
         validate: x => x.length > 0 ? true : 'You have to provide a username',
         when: () => !this.options.org
@@ -181,6 +200,13 @@ module.exports = class extends Generator {
 
           return true;
         }
+      },
+      {
+        type: 'confirm',
+        name: 'buildWithWebpack',
+        message: 'Build with Webpack',
+        default: true,
+        store: true
       },
       {
         type: 'list',
@@ -300,6 +326,7 @@ module.exports = class extends Generator {
         }
       }
     ]).then(props => {
+      if (this.debug) console.log(props);
 
       props.className = pascalCase(props.name.replace('-', ' '));
       props.licenseURL = spdxLicenseList[props.license].url;
@@ -372,6 +399,19 @@ module.exports = class extends Generator {
         }
       );
 
+      props.scriptBuild = (props.buildWithWebpack) ? 'webpack --mode none' : 'coffee --compile --output lib/ src/';
+      props.scriptDev = (props.buildWithWebpack) ? 'webpack --mode none --watch' : 'coffee --watch --compile --output lib/ src/';
+
+      if (props.buildWithWebpack) {
+        this.fs.copyTpl(
+          this.templatePath('webpack.config.js.ejs'),
+          this.destinationPath(`webpack.config.js`),
+          {
+            pkg: props
+          }
+        );
+      }
+
       this.fs.copyTpl(
         this.templatePath('package.json.ejs'),
         this.destinationPath('package.json'),
@@ -419,6 +459,10 @@ module.exports = class extends Generator {
       const coffeelint = (props.compiler === 'coffeescript@1') ? 'coffeelint@1' : 'coffeelint@2'
       const dependencies = [props.compiler];
       let devDependencies = [coffeelint, 'husky'];
+
+      if (props.buildWithWebpack) {
+        devDependencies.push('coffee-loader','webpack', 'webpack-cli');
+      }
 
       if (props.buildScript === 'prepublishOnly') {
         devDependencies = devDependencies.concat(dependencies)
