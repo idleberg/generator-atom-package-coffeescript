@@ -399,7 +399,7 @@ module.exports = class extends Generator {
         }
       );
 
-      props.scriptBuild = (props.buildWithWebpack) ? 'webpack --mode none' : 'coffee --compile --output lib/ src/';
+      props.scriptBuild = (props.buildWithWebpack) ? 'webpack --mode production' : 'coffee --compile --output lib/ src/';
       props.scriptDev = (props.buildWithWebpack) ? 'webpack --mode none --watch' : 'coffee --watch --compile --output lib/ src/';
 
       if (props.buildWithWebpack) {
