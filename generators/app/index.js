@@ -382,6 +382,13 @@ module.exports = class extends Generator {
           pkg: props
         }
       );
+      this.fs.copy(
+        this.templatePath('src/config.coffee.ejs'),
+        this.destinationPath(`src/config.coffee`),
+        {
+          pkg: props
+        }
+      );
 
       this.fs.copyTpl(
         this.templatePath('README.md.ejs'),

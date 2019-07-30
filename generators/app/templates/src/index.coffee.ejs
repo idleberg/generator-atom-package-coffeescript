@@ -1,7 +1,8 @@
-{CompositeDisposable} = require "atom"
+{ CompositeDisposable } = require "atom"
+{ configSchema } = require "./config"
 
 module.exports = <%= pkg.className %> =
-  config: null
+  config: configSchema
   subscriptions: null
 
   activate: (state) ->
