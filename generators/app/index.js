@@ -302,6 +302,87 @@ module.exports = class extends Generator {
           }
         ]
       },
+      ,
+      {
+        type: 'list',
+        name: 'stylelintConfig',
+        message: 'Stylelint Configuration',
+        store: true,
+        choices: [
+          {
+            name: terminalLink('Airbnb', 'https://www.npmjs.com/package/stylelint-config-airbnb', {
+              fallback() {
+                return 'Airbnb';
+              }
+            }),
+            value: 'airbnb',
+          },
+          {
+            name: terminalLink('Idiomatic', 'https://www.npmjs.com/package/stylelint-config-idiomatic', {
+              fallback() {
+                return 'Idiomatic';
+              }
+            }),
+            value: 'idiomatic',
+          },
+          {
+            name: terminalLink('Prettier', 'https://www.npmjs.com/package/stylelint-config-prettier', {
+              fallback() {
+                return 'Prettier';
+              }
+            }),
+            value: 'prettier',
+          },
+          {
+            name: terminalLink('Primer', 'https://www.npmjs.com/package/stylelint-config-primer', {
+              fallback() {
+                return 'Primer';
+              }
+            }),
+            value: 'primer',
+          },
+          {
+            name: terminalLink('Recommended', 'https://www.npmjs.com/package/stylelint-config-recommended', {
+              fallback() {
+                return 'Recommended';
+              }
+            }),
+            value: 'recommended',
+          },
+          {
+            name: terminalLink('Shopify', 'https://www.npmjs.com/package/stylelint-config-shopify', {
+              fallback() {
+                return 'Shopify';
+              }
+            }),
+            value: 'shopify',
+          },
+          {
+            name: terminalLink('Standard', 'https://www.npmjs.com/package/stylelint-config-standard', {
+              fallback() {
+                return 'Standard';
+              }
+            }),
+            value: 'standard',
+          },
+          {
+            name: terminalLink('WordPress', 'https://www.npmjs.com/package/stylelint-config-wordpress', {
+              fallback() {
+                return 'WordPress';
+              }
+            }),
+            value: 'wordpress',
+          },
+          {
+            name: terminalLink('XO', 'https://www.npmjs.com/package/stylelint-config-xo', {
+              fallback() {
+                return 'XO';
+              }
+            }),
+            value: 'xo',
+          }
+        ]
+      },
       {
         type: 'confirm',
         name: 'initGit',
@@ -465,10 +546,18 @@ module.exports = class extends Generator {
         this.destinationPath(`coffeelint.json`)
       );
 
+      this.fs.copyTpl(
+        this.templatePath('_stylelintrc.ejs'),
+        this.destinationPath(`.stylelintrc`),
+        {
+          pkg: props
+        }
+      );
+
       // Install latest versions of dependencies
       const coffeelint = (props.compiler === 'coffeescript@1') ? 'coffeelint@1' : 'coffeelint@2'
       const dependencies = [props.compiler];
-      let devDependencies = [coffeelint, 'husky'];
+      let devDependencies = [coffeelint, 'husky', 'stylelint', `stylelint-config-${props.stylelintConfig}`];
 
       if (props.buildWithWebpack) {
         devDependencies.push('coffee-loader','webpack', 'webpack-cli');
