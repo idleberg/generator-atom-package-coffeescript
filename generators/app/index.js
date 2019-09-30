@@ -302,7 +302,6 @@ module.exports = class extends Generator {
           }
         ]
       },
-      ,
       {
         type: 'list',
         name: 'stylelintConfig',
