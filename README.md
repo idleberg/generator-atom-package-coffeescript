@@ -30,6 +30,14 @@ npm i generator-atom-package-coffeescript -g
 
 ## Usage
 
+Create a new directory for your package and change into it
+
+```sh
+cd ~/.atom
+mkdir my-package
+cd my-package
+```
+
 Run the generator and follow its instructions. Use `--help`to list available flags.
 
 ```sh
