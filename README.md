@@ -33,7 +33,7 @@ npm i generator-atom-package-coffeescript -g
 Create a new directory for your package and change into it
 
 ```sh
-cd ~/.atom
+cd ~/.atom/packages
 mkdir my-package
 cd my-package
 ```
