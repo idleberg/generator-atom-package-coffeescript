@@ -17,7 +17,8 @@ Atom already transpiles packages written in CoffeeScript automatically, but ther
 - adds any [SPDX](https://spdx.org/licenses/) license
 - adds [CircleCI](https://circleci.com) configuration
 - adds [Travis CI](https://travis-ci.org) configuration
-- adds linter configuration
+- adds [CoffeeLint](https://github.com/clutchski/coffeelint) configuration
+- adds [stylelint](https://stylelint.io/) configuration
 - adds [Atom package dependencies](https://www.npmjs.com/package/atom-package-deps)
 
 ## Installation
