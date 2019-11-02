@@ -561,7 +561,14 @@ module.exports = class extends Generator {
       // Install latest versions of dependencies
       const coffeelint = (props.compiler === 'coffeescript@1') ? 'coffeelint@1' : 'coffeelint@2'
       const dependencies = [props.compiler];
-      let devDependencies = [coffeelint, 'concurrently', 'husky', 'stylelint', `stylelint-config-${props.stylelintConfig}`];
+      let devDependencies = [coffeelint, 'concurrently', 'husky'];
+
+      if (props.features.includes('styles')) {
+        devDependencies.push(
+          'stylelint',
+          `stylelint-config-${props.stylelintConfig}`
+        );
+      }
 
       if (props.buildWithWebpack) {
         devDependencies.push('coffee-loader','webpack', 'webpack-cli');
