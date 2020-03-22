@@ -4,7 +4,7 @@ const meta = require('../../package.json');
 const axios = require('axios');
 // const gitUserName = require('git-user-name');
 const mkdirp = require('mkdirp');
-const pascalCase = require('pascal-case');
+const { pascalCase } = require('pascal-case');
 const slugify = require('@sindresorhus/slugify');
 const spdxLicenseList = require('spdx-license-list/full');
 const terminalLink = require('terminal-link');
@@ -70,7 +70,7 @@ module.exports = class extends Generator {
     this.allowAtomPrefix = (this.options.allowAtomPrefix ? true : false);
     this.allowEmptyDescription = (this.options.allowEmptyDescription ? true : false);
     this.clear = (this.options.clear ? true : false);
-    this.debug = (this.options.debug ? true : false);
+    this.debugMode = (this.options.debug ? true : false);
   }
 
   inquirer() {
@@ -408,7 +408,7 @@ module.exports = class extends Generator {
         }
       }
     ]).then(props => {
-      if (this.debug) console.log(props);
+      if (this.debugMode) console.log(props);
 
       props.className = pascalCase(props.name.replace('-', ' '));
       props.licenseURL = spdxLicenseList[props.license].url;
